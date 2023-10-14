@@ -41,15 +41,34 @@ export default {
       this.$router.push("siginin");
     },
     login() {
-      axios.defaults.headers.get["Content-Type"] = "application/json";
-      axios
-        .get("http://127.0.0.1:5000/")
-        .then(function (response) {
-          console.log(res.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      const $this = this;
+      if (this.id_input.includes(" ") == true) {
+        alert("You must write your ID without 'Space'");
+        this.id_input = "";
+        this.ps_input = "";
+      } else if (this.ps_input.includes(" ") == true) {
+        alert("You must write your Password without 'Space'");
+        this.id_input = "";
+        this.ps_input = "";
+      } else {
+        axios
+          .post("http://127.0.0.1:5000/login", {
+            userID: this.id_input,
+            password: this.ps_input,
+          })
+          .then(function (response) {
+            console.log(response.data)
+            if (response.data.status == "SUCCESS") {
+              alert("Login Success!");
+              $this.$router.push("/main");
+            } else {
+              alert("The ID or Password you entered does not exist.");
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
     },
   },
 };

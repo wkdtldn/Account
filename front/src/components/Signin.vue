@@ -37,8 +37,11 @@ export default {
   },
   methods: {
     submit() {
+      let id_input = this.id_input;
+      const $this = this;
       this.id_input = this.id_input.trim();
       this.ps_input = this.ps_input.trim();
+
       if (this.id_input == "") {
         alert("You must write your ID without 'Space'");
         this.id_input = "";
@@ -57,7 +60,7 @@ export default {
         this.ps_input = "";
       } else {
         axios
-          .post("http://127.0.0.1:5000/", {
+          .post("http://127.0.0.1:5000/signin", {
             userID: this.id_input,
             password: this.ps_input,
           })
@@ -65,8 +68,9 @@ export default {
             console.log(response["data"]);
             if (response["data"]["status"] == "SUCCESS") {
               alert("Your membership registration has been successful.");
+              $this.$router.push("/login");
             } else if (response["data"]["status"] == "FAIL") {
-              alert(this.id_input + ", this ID is already exists.");
+              alert(id_input + ", this ID is already exists."); // data
             }
           })
           .catch(function (error) {
