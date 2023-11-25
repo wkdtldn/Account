@@ -11,7 +11,7 @@
     ---
     - 구글, 네이버, 게임 등과 같이 인터넷 속에서는 결국 자신의 정보가 존재하고 이를 사용해야한다. 그렇기 때문에 만일에 내가 프로젝트를 만들때 다른 사람들과 함께 사용된다면 이 기능의 필요성이 높아질것 같기 때문에 이를 준비하고자 만들었다.
 
--
+
 ## 사용한 언어
  [![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg)](https://forthebadge.com) &nbsp;
     [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) &nbsp;
